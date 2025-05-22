@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My Shopping List</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id="addButton">Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+
+        let list = document.querySelector('ul');
+        let input = document.querySelector('input');
+        let button = document.querySelector('button');
+
+        function handleClick() {
+
+            let newItem = input.value
+
+            if (newItem == '') {
+                return;
+            }
+
+            let listItem = document.createElement('li');
+            let span = document.createElement('span');
+            let checkBox = document.createElement('input');
+            checkBox.type = 'checkBox';
+            let deleteButton = document.createElement('button');
+
+            span.textContent = newItem;
+            deleteButton.textContent = 'Delete';
+
+
+            listItem.appendChild(span);
+            listItem.appendChild(checkBox);
+            listItem.appendChild(deleteButton);
+
+            list.appendChild(listItem);
+
+            input.value = '';
+
+            deleteButton.addEventListener('click', function() {
+                listItem.remove();
+            });
+            
+
+        }
+
+        button.addEventListener('click', handleClick);
+       
+
+    </script>
+  </body>
+</html>
